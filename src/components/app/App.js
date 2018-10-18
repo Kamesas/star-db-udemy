@@ -1,35 +1,28 @@
-import React, { Component } from "react";
-import SwapiService from "../../db/swapi";
+import React from "react";
 
-class App extends Component {
-  state = {
-    people: []
-  };
+import Header from "../header/Header";
+import RandomPlanet from "../random-planet/RandomPlanet";
+import ItemList from "../item-list/ItemList";
+import PersonDetails from "../person-details/PersonDetails";
 
-  componentDidMount() {
-    const swapi = new SwapiService();
+import "./App.css";
 
-    swapi.getAllPeople().then(body => {
-      this.setState({ people: body });
-    });
-  }
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <RandomPlanet />
 
-  render() {
-    return (
-      <div className="App">
-        <div className="list-group">
-          {this.state.people.map(item => (
-            <li
-              key={item.url}
-              className="list-group-item list-group-item-action"
-            >
-              {item.name}
-            </li>
-          ))}
+      <div className="row mb2">
+        <div className="col-md-6">
+          <ItemList />
+        </div>
+        <div className="col-md-6">
+          <PersonDetails />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
