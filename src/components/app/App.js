@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SwapiService from "./db/swapi";
+import SwapiService from "../../db/swapi";
 
 class App extends Component {
   state = {
