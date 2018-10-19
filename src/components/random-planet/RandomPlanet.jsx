@@ -16,9 +16,16 @@ export default class RandomPlanet extends Component {
     this.setState({ planet, loading: false });
   };
 
+  onErr() {
+    console.log("err");
+  }
+
   updatePlanets() {
     const id = Math.floor(Math.random() * 25) + 2;
-    this.swapi.getPlanet(id).then(this.onPlanetLoaded);
+    this.swapi
+      .getPlanet(id)
+      .then(this.onPlanetLoaded)
+      .catch(this.onErr);
   }
 
   componentDidMount() {
@@ -43,7 +50,11 @@ export default class RandomPlanet extends Component {
       <div className="random-planet jumbotron rounded">
         <img
           className="planet-image"
-          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+          src={
+            id < 20
+              ? `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`
+              : "https://cdn.playbuzz.com/cdn/47e06c73-4eae-475b-934b-fedcc1156f32/db811641-5a85-4ccb-849e-343c3d28b5ad_560_420.jpg"
+          }
           alt="alt"
         />
 
