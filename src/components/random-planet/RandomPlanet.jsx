@@ -3,6 +3,7 @@ import SwapiService from "../../db/swapi";
 import Loader from "../loader/Loader";
 
 import "./RandomPlanet.css";
+import planets from "./planets.jpg";
 
 export default class RandomPlanet extends Component {
   swapi = new SwapiService();
@@ -53,7 +54,7 @@ export default class RandomPlanet extends Component {
           src={
             id < 20
               ? `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`
-              : "https://cdn.playbuzz.com/cdn/47e06c73-4eae-475b-934b-fedcc1156f32/db811641-5a85-4ccb-849e-343c3d28b5ad_560_420.jpg"
+              : planets
           }
           alt="alt"
         />
